@@ -1,0 +1,42 @@
+.hero-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 50px 80px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #00ffc8;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #e0e0e0;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  background: linear-gradient(90deg, #00ffc8, #0072ff);
+  color: white;
+  padding: 12px 35px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: scale(1.1);
+}

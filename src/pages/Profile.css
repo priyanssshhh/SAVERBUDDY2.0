@@ -1,0 +1,106 @@
+/* src/pages/Profile.css (copy same into Settings.css & HelpSupport.css) */
+
+/* Background setup */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: radial-gradient(circle at top left, #0a0a0a, #000);
+  color: #fff;
+}
+
+/* Glassmorphism container */
+.glass-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px;
+  width: 85%;
+  max-width: 700px;
+  box-shadow: 0 0 30px rgba(0, 255, 200, 0.2);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+/* Headings */
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #00ffc8;
+  margin-bottom: 10px;
+}
+
+.page-subtitle {
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+/* Profile / Settings Info Sections */
+.profile-info, .settings-options {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.info-item, .setting-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+
+.label {
+  font-weight: bold;
+  color: #00ffc8;
+}
+
+.value {
+  color: #eee;
+}
+
+/* Buttons */
+.edit-btn, .save-btn, .btn-outline {
+  background: linear-gradient(90deg, #00ffc8, #007bff);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #000;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:hover, .save-btn:hover, .btn-outline:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.5);
+}
+
+/* Help & Support Cards */
+.support-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.support-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 25px;
+  width: 280px;
+  box-shadow: 0 0 15px rgba(0,255,200,0.1);
+}
+
+.support-card h3 {
+  color: #00ffc8;
+  margin-bottom: 10px;
+}
+
+.support-card p {
+  color: #bbb;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}

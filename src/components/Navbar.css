@@ -1,0 +1,237 @@
+/* 🌙 SAVERBUDDY NAVBAR — Microsoft-Inspired Layout */
+
+/* 🔹 Base Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 60px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 🔹 Left Section */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-logo img {
+  height: 75px;
+  width: auto;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 200, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo img:hover {
+  transform: scale(1.05);
+}
+
+.logo-text {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* 🔹 Pro Label */
+.pro-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #aaa;
+  font-weight: 600;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.pro-label span:first-child {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.pro-text {
+  color: #00ffc8;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* 🔹 Center Links */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a,
+.resources-link-btn {
+  color: #e0e0e0;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.navbar-links a:hover,
+.resources-link-btn:hover {
+  color: #00ffc8;
+  transform: translateY(-2px);
+}
+
+/* 🔹 Right Section */
+.account-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Login Button */
+.login-btn {
+  background: linear-gradient(90deg, #00ffc8, #00aaff);
+  color: #000;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background: linear-gradient(90deg, #00aaff, #00ffc8);
+  transform: scale(1.05);
+}
+
+/* 🔹 Profile Container */
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #00ffc8, #007bff);
+  padding: 10px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #000;
+  font-weight: 600;
+}
+
+.profile-container:hover {
+  border: 2px solid #00ffc8;
+  transform: scale(1.03);
+}
+
+/* 🔹 Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: rgba(20, 20, 20, 0.97);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 255, 200, 0.25);
+  width: 230px;
+  z-index: 20;
+  animation: fadeIn 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.account-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #00ffc8;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Logout */
+.logout {
+  width: 100%;
+  border: none;
+  background: none;
+  color: #ff6666;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout:hover {
+  background: rgba(255, 0, 0, 0.12);
+}
+
+/* Divider */
+.dropdown-divider {
+  border: none;
+  height: 1px;
+  margin: 6px 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px 30px;
+  }
+
+  .navbar-links {
+    gap: 20px;
+  }
+
+  .navbar-left {
+    gap: 8px;
+  }
+}
