@@ -1,0 +1,70 @@
+.finance-page {
+  min-height: 100vh;
+  padding: 120px 10%;
+  background: linear-gradient(180deg, #0b0b0b, #111);
+  color: white;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.subtitle {
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+.transaction-form {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.transaction-form input,
+.transaction-form select {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  min-width: 180px;
+}
+
+.transaction-form button {
+  background: linear-gradient(90deg, #00ffc8, #007bff);
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.transaction-form button:hover {
+  transform: scale(1.05);
+}
+
+.summary-card {
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  margin-inline: auto;
+}
+
+.transaction-list {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}

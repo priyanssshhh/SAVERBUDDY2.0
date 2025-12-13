@@ -11,7 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ Track login state
+  // ✅ Track Firebase Auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -25,45 +25,60 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  // ✅ Scroll smoothly to “Resources” section (only on Home)
-  const handleResourcesClick = (e) => {
-    e.preventDefault();
-
-    if (location.pathname === "/") {
-      const section = document.getElementById("resources");
+  // ✅ Scroll smoothly to a section on Home
+  const scrollToSection = (id) => {
+    const scrollNow = () => {
+      const section = document.getElementById(id);
       if (section) section.scrollIntoView({ behavior: "smooth" });
-    } else {
+    };
+
+    if (location.pathname !== "/") {
       navigate("/");
-      setTimeout(() => {
-        const section = document.getElementById("resources");
-        if (section) section.scrollIntoView({ behavior: "smooth" });
-      }, 600);
+      setTimeout(scrollNow, 400); // Wait until Home loads
+    } else {
+      scrollNow();
     }
   };
 
   return (
     <nav className="navbar">
-      {/* ===== LEFT SECTION (Logo + Pro Label) ===== */}
-      <div className="navbar-left">
-        <div className="navbar-logo" onClick={() => navigate("/")}>
+      {/* ===== LEFT SECTION (Logo + SaverBuddy Pro) ===== */}
+      <div className="navbar-left" onClick={() => navigate("/")}>
+        <div className="navbar-logo">
           <img src="/logo.png" alt="SaverBuddy Logo" />
           <span className="logo-text">SaverBuddy</span>
         </div>
 
+        {/* ✅ Fixed: Prevent logo click when pressing SaverBuddy Pro */}
         <div
           className="pro-label"
-          onClick={() => navigate("/pricing")}
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate("/pricing");
+          }}
           style={{ cursor: "pointer" }}
         >
-          <span>|</span> <span className="pro-text">SaverBuddy Pro</span>
+          <span>|</span> <span className="pro-text">SAVERBUDDY PRO</span>
         </div>
       </div>
 
       {/* ===== CENTER NAV LINKS ===== */}
       <ul className="navbar-links">
+        {/* Features */}
         <li>
-          <Link to="/features">Features</Link>
+          {!user ? (
+            <button
+              className="resources-link-btn"
+              onClick={() => scrollToSection("features")}
+            >
+              Features
+            </button>
+          ) : (
+            <Link to="/features">Features</Link>
+          )}
         </li>
+
+        {/* Plans & Pricing */}
         <li>
           <Link to="/pricing">Plans & Pricing</Link>
         </li>
@@ -71,7 +86,10 @@ const Navbar = () => {
         {/* Before Login → Resources | After Login → My Finances */}
         {!user ? (
           <li>
-            <button onClick={handleResourcesClick} className="resources-link-btn">
+            <button
+              onClick={() => scrollToSection("resources")}
+              className="resources-link-btn"
+            >
               Resources
             </button>
           </li>
@@ -81,12 +99,22 @@ const Navbar = () => {
           </li>
         )}
 
+        {/* Support (scrolls to support section before login) */}
         <li>
-          <Link to="/support">Support</Link>
+          {!user ? (
+            <button
+              className="resources-link-btn"
+              onClick={() => scrollToSection("support")}
+            >
+              Support
+            </button>
+          ) : (
+            <Link to="/support">Support</Link>
+          )}
         </li>
       </ul>
 
-      {/* ===== RIGHT SECTION (Login / Profile) ===== */}
+      {/* ===== RIGHT SECTION (Login or Account Dropdown) ===== */}
       <div className="account-dropdown">
         {!user ? (
           <Link to="/login" className="login-btn">

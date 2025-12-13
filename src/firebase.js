@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// ✅ Firebase Configuration
+// 🔥 Your Firebase Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAdM9J-GM2vC8vNjvyw0gRjXkdnROXs3Y4",
   authDomain: "saverbuddy-4f402.firebaseapp.com",
@@ -22,24 +22,26 @@ const firebaseConfig = {
 // ✅ Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// ✅ Setup Auth
+// ✅ Initialize Firestore
+const db = getFirestore(app);
+
+// ✅ Setup Firebase Authentication
 const auth = getAuth(app);
 auth.languageCode = "en";
 
-(async () => {
-  try {
-    await setPersistence(auth, browserLocalPersistence);
-    console.log("✅ Persistence set");
-  } catch (err) {
-    console.error("❌ Persistence error:", err);
-  }
-})();
+// ✅ Make login persistent (keeps user signed in even after refresh)
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    console.log("✅ Firebase Auth persistence enabled (local).");
+  })
+  .catch((error) => {
+    console.error("❌ Firebase persistence error:", error.message);
+  });
 
-// ✅ Setup Google Provider
+// ✅ Setup Google Sign-In Provider
 const googleProvider = new GoogleAuthProvider();
-googleProvider.setCustomParameters({ prompt: "select_account" });
-
-// ✅ Firestore
-const db = getFirestore(app);
+googleProvider.setCustomParameters({
+  prompt: "select_account",
+});
 
 export { auth, googleProvider, db };
