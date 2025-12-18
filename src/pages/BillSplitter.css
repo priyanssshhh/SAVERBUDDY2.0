@@ -1,81 +1,74 @@
 .splitter-page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0b0b0b, #111);
-  color: #fff;
-  text-align: center;
   padding: 120px 10%;
+  background: linear-gradient(180deg, #0b0b0b, #111);
+  color: white;
   font-family: "Poppins", sans-serif;
-}
-
-h1 {
-  color: #00ffc8;
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-  text-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
 }
 
 .subtitle {
   color: #aaa;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 25px;
   margin-bottom: 30px;
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.12);
 }
 
-.people-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.person-row {
-  display: flex;
-  gap: 10px;
-}
-
-.person-row input {
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-size: 0.95rem;
-}
-
-.add-btn,
-.calc-btn {
-  background: linear-gradient(90deg, #00ffc8, #007bff);
-  color: #000;
-  font-weight: bold;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-
-.add-btn:hover,
-.calc-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 255, 200, 0.4);
-}
-
-.results {
-  margin-top: 40px;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 20px;
-  border-radius: 12px;
-  width: fit-content;
-  margin-inline: auto;
-}
-
-.results h2 {
+.card h2 {
   color: #00ffc8;
   margin-bottom: 15px;
 }
 
-.results p {
-  color: #ddd;
-  margin: 5px 0;
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 10px;
+}
+
+button {
+  background: linear-gradient(90deg, #00ffc8, #007bff);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.people-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: rgba(0, 255, 200, 0.15);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.result {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

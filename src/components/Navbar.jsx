@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { createUserProfile } from "../services/userService"; // ✅ ADD THIS
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -11,11 +12,17 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ Track Firebase Auth state
+  // ✅ Track Firebase Auth state + ensure Firestore profile exists
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+
+      // ✅ ENSURE USER PROFILE EXISTS IN FIRESTORE
+      if (currentUser) {
+        await createUserProfile(currentUser);
+      }
     });
+
     return () => unsubscribe();
   }, []);
 
@@ -34,7 +41,7 @@ const Navbar = () => {
 
     if (location.pathname !== "/") {
       navigate("/");
-      setTimeout(scrollNow, 400); // Wait until Home loads
+      setTimeout(scrollNow, 400);
     } else {
       scrollNow();
     }
@@ -42,14 +49,13 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      {/* ===== LEFT SECTION (Logo + SaverBuddy Pro) ===== */}
+      {/* ===== LEFT SECTION ===== */}
       <div className="navbar-left" onClick={() => navigate("/")}>
         <div className="navbar-logo">
           <img src="/logo.png" alt="SaverBuddy Logo" />
           <span className="logo-text">SaverBuddy</span>
         </div>
 
-        {/* ✅ Fixed: Prevent logo click when pressing SaverBuddy Pro */}
         <div
           className="pro-label"
           onClick={(e) => {
@@ -64,7 +70,6 @@ const Navbar = () => {
 
       {/* ===== CENTER NAV LINKS ===== */}
       <ul className="navbar-links">
-        {/* Features */}
         <li>
           {!user ? (
             <button
@@ -78,12 +83,10 @@ const Navbar = () => {
           )}
         </li>
 
-        {/* Plans & Pricing */}
         <li>
           <Link to="/pricing">Plans & Pricing</Link>
         </li>
 
-        {/* Before Login → Resources | After Login → My Finances */}
         {!user ? (
           <li>
             <button
@@ -99,7 +102,6 @@ const Navbar = () => {
           </li>
         )}
 
-        {/* Support (scrolls to support section before login) */}
         <li>
           {!user ? (
             <button
@@ -114,7 +116,7 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* ===== RIGHT SECTION (Login or Account Dropdown) ===== */}
+      {/* ===== RIGHT SECTION ===== */}
       <div className="account-dropdown">
         {!user ? (
           <Link to="/login" className="login-btn">

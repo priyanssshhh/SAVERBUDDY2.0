@@ -104,3 +104,55 @@
   font-size: 0.95rem;
   margin-bottom: 15px;
 }
+.settings-page {
+  padding: 40px;
+  max-width: 700px;
+  margin: auto;
+  color: white;
+}
+
+.settings-page h1 {
+  margin-bottom: 30px;
+}
+
+.settings-card {
+  background: #111;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.05);
+}
+
+.settings-card h2 {
+  margin-bottom: 15px;
+  color: #00ffc8;
+}
+
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.toggle-row input {
+  transform: scale(1.3);
+}
+
+.hint {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.danger {
+  border: 1px solid #ff4d4d;
+}
+
+.logout-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}

@@ -8,60 +8,62 @@ export default function Dashboard() {
 
   const features = [
     {
-      title: "Expense Tracker",
-      desc: "Track your spending, set budgets, and visualize your flow.",
-      icon: "💰",
-      path: "/myfinances",
-    },
-    {
       title: "Bill Splitter",
-      desc: "Split bills seamlessly with friends, roommates, or colleagues.",
+      desc: "Split bills & see who pays whom exactly.",
       icon: "🤝",
       path: "/splitter",
     },
     {
-      title: "Best from the Market",
-      desc: "Discover best deals, discounts, and offers just for you.",
-      icon: "🏷️",
-      path: "/deals",
+      title: "My Finances",
+      desc: "Track expenses, income & savings.",
+      icon: "💰",
+      path: "/myfinances",
     },
     {
       title: "AI Assistant",
-      desc: "Get smart saving & investment suggestions using AI.",
+      desc: "Smart budgeting & saving suggestions.",
       icon: "🤖",
       path: "/ai",
     },
     {
-      title: "Smart Investments",
-      desc: "Let SaverBuddy guide where your saved money should go.",
+      title: "Best Deals",
+      desc: "Find best market deals & coupons.",
+      icon: "🏷️",
+      path: "/deals",
+    },
+    {
+      title: "Where to Invest",
+      desc: "Guidance on saving & investing money.",
       icon: "📈",
       path: "/invest",
     },
     {
-      title: "Pay via SaverBuddy",
-      desc: "Use SaverBuddy Pay for cashback & exclusive coupons.",
+      title: "SaverBuddy Pay",
+      desc: "Pay bills & get cashback offers.",
       icon: "💳",
       path: "/pay",
     },
   ];
 
   return (
-    <div className="dashboard-container">
-      <h1 className="dashboard-title">Welcome to SaverBuddy Dashboard 🎉</h1>
+    <div className="dashboard-page">
+      <h1 className="dashboard-title">
+        Welcome to <span>SaverBuddy</span> 🚀
+      </h1>
       <p className="dashboard-subtitle">
-        Manage your budget, track spending, explore AI insights & more — all in one place.
+        All your money tools — one powerful dashboard
       </p>
 
-      <div className="features-grid">
-        {features.map((f, i) => (
+      <div className="dashboard-grid">
+        {features.map((item, index) => (
           <div
-            key={i}
-            className="feature-card"
-            onClick={() => navigate(f.path)}
+            key={index}
+            className="dashboard-card"
+            onClick={() => navigate(item.path)}
           >
-            <div className="icon">{f.icon}</div>
-            <h3>{f.title}</h3>
-            <p>{f.desc}</p>
+            <div className="icon">{item.icon}</div>
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
           </div>
         ))}
       </div>

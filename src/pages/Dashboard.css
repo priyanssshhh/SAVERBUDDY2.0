@@ -1,70 +1,60 @@
-/* src/pages/Dashboard.css */
-
-.dashboard-container {
+.dashboard-page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #020202, #0c0c0c, #121212);
-  color: #fff;
+  padding: 120px 8%;
+  background: linear-gradient(180deg, #0b0b0b, #111);
+  color: white;
   text-align: center;
-  font-family: "Poppins", sans-serif;
-  padding: 120px 10%;
 }
 
 .dashboard-title {
-  font-size: 2.5rem;
-  color: #00ffc8;
+  font-size: 2.8rem;
   margin-bottom: 10px;
-  text-shadow: 0 0 25px rgba(0, 255, 200, 0.4);
+}
+
+.dashboard-title span {
+  color: #00ffc8;
 }
 
 .dashboard-subtitle {
   color: #aaa;
   margin-bottom: 60px;
+  font-size: 1.1rem;
 }
 
-.features-grid {
+.dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 35px;
 }
 
-.feature-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(0, 255, 200, 0.2);
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-  padding: 30px 25px;
+  padding: 35px 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 0 25px rgba(0, 255, 200, 0.05);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.08);
 }
 
-.feature-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 0 30px rgba(0, 255, 200, 0.3);
+.dashboard-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 30px rgba(0, 255, 200, 0.35);
   border-color: #00ffc8;
 }
 
-.feature-card .icon {
-  font-size: 2.8rem;
+.dashboard-card .icon {
+  font-size: 3rem;
   margin-bottom: 15px;
 }
 
-.feature-card h3 {
+.dashboard-card h3 {
   color: #00ffc8;
   margin-bottom: 10px;
+  font-size: 1.4rem;
 }
 
-.feature-card p {
+.dashboard-card p {
   color: #ccc;
   font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-@media (max-width: 768px) {
-  .dashboard-container {
-    padding: 100px 5%;
-  }
-  .feature-card {
-    padding: 25px 20px;
-  }
 }

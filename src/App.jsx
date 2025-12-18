@@ -2,160 +2,89 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// 🔹 Components
+// Global Components
 import Navbar from "./components/Navbar";
 import BackgroundVideo from "./components/BackgroundVideo";
 
-// 🔹 Pages
+// Pages
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Pricing from "./pages/Pricing";
 import MyFinances from "./pages/MyFinances";
 import BillSplitter from "./pages/BillSplitter";
 import Support from "./pages/Support";
+import Features from "./pages/Features"; // ✅ ADD THIS
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 
-// 🔹 Authentication
+
+
+// Auth
 import Login from "./components/authentication/Login";
 import Signup from "./components/authentication/Signup";
 
 function App() {
   return (
     <Router>
-      {/* Background + Navbar are global */}
       <BackgroundVideo />
       <Navbar />
 
       <Routes>
-        {/* 🌐 Public Pages */}
+        {/* 🌐 Public */}
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/features" element={<Features />} /> {/* ✅ FIX */}
+        <Route path="/settings" element={<Settings />} />
 
-        {/* 👤 User Dashboard */}
-        <Route path="/dashboard" element={<Dashboard />} />
 
-        {/* 💰 Finance Tools */}
-        <Route path="/myfinances" element={<MyFinances />} />
-        <Route path="/splitter" element={<BillSplitter />} />
-
-        {/* 🚀 Future Expansion (placeholders) */}
-        <Route
-          path="/deals"
-          element={
-            <div
-              style={{
-                minHeight: "100vh",
-                color: "white",
-                background: "linear-gradient(180deg, #0b0b0b, #111)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-              }}
-            >
-              <h1>🏷️ Best Deals For You</h1>
-              <p style={{ opacity: 0.8 }}>
-                Compare top market discounts and coupons through SaverBuddy Pay.
-              </p>
-            </div>
-          }
-        />
-
-        <Route
-          path="/ai"
-          element={
-            <div
-              style={{
-                minHeight: "100vh",
-                color: "white",
-                background: "linear-gradient(180deg, #0b0b0b, #111)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-              }}
-            >
-              <h1>🤖 AI Assistant (Pro Feature)</h1>
-              <p style={{ opacity: 0.8 }}>
-                Get personalized financial insights and budget optimization
-                suggestions.
-              </p>
-            </div>
-          }
-        />
-
-        <Route
-          path="/invest"
-          element={
-            <div
-              style={{
-                minHeight: "100vh",
-                color: "white",
-                background: "linear-gradient(180deg, #0b0b0b, #111)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-              }}
-            >
-              <h1>📈 Smart Investment Guide</h1>
-              <p style={{ opacity: 0.8 }}>
-                Track, plan, and learn where to invest your saved money safely.
-              </p>
-            </div>
-          }
-        />
-
-        <Route
-          path="/pay"
-          element={
-            <div
-              style={{
-                minHeight: "100vh",
-                color: "white",
-                background: "linear-gradient(180deg, #0b0b0b, #111)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-              }}
-            >
-              <h1>💳 SaverBuddy Pay</h1>
-              <p style={{ opacity: 0.8 }}>
-                Pay directly through SaverBuddy for cashback and exclusive
-                coupons.
-              </p>
-            </div>
-          }
-        />
-
-        {/* 🔐 Authentication */}
+        {/* 🔐 Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* 🧭 404 - Fallback */}
-        <Route
-          path="*"
-          element={
-            <div
-              style={{
-                minHeight: "100vh",
-                background: "black",
-                color: "white",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-              }}
-            >
-              <h1>⚠️ 404</h1>
-              <p>Page not found</p>
-            </div>
-          }
-        />
+        {/* 👤 User Area */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/myfinances" element={<MyFinances />} />
+        <Route path="/splitter" element={<BillSplitter />} />
+        <Route path="/profile" element={<Profile />} />
+
+
+        {/* 🚀 Future features */}
+        <Route path="/ai" element={<ComingSoon title="AI Assistant" />} />
+        <Route path="/deals" element={<ComingSoon title="Best Market Deals" />} />
+        <Route path="/invest" element={<ComingSoon title="Investment Advisor" />} />
+        <Route path="/pay" element={<ComingSoon title="SaverBuddy Pay" />} />
+
+        {/* ❌ 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
 }
+
+/* 🔧 Helper components (unchanged) */
+const ComingSoon = ({ title }) => (
+  <div style={pageStyle}>
+    <h1>🚧 {title}</h1>
+    <p>Coming soon in SaverBuddy Pro</p>
+  </div>
+);
+
+const NotFound = () => (
+  <div style={pageStyle}>
+    <h1>404</h1>
+    <p>Page not found</p>
+  </div>
+);
+
+const pageStyle = {
+  minHeight: "100vh",
+  background: "linear-gradient(180deg,#0b0b0b,#111)",
+  color: "white",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+};
 
 export default App;
