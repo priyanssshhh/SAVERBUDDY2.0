@@ -4,14 +4,175 @@
   padding: 0;
 }
 
-html,
-body,
-#root {
+html, body, #root {
   height: 100%;
   font-family: "Poppins", system-ui, sans-serif;
   background: #0b0b0b;
   color: white;
 }
+
 html {
   scroll-behavior: smooth;
+}
+
+/* ===== GLOBAL MOBILE FIXES ===== */
+input, select, textarea, button {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 10px;
+  font-size: 16px; /* Prevents iOS zoom on focus */
+}
+
+select option {
+  background: #1a1a1a;
+  color: white;
+}
+
+button {
+  font-size: 1rem;
+}
+
+/* ===== FINANCE PAGE — MOBILE ===== */
+.finance-page {
+  min-height: 100vh;
+  padding: 100px 5% 60px;
+  background: linear-gradient(180deg, #0b0b0b, #111);
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.finance-page h1 {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #aaa;
+  margin-bottom: 24px;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+}
+
+/* ===== CARD ===== */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card h2 {
+  color: #00ffc8;
+  margin-bottom: 14px;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+}
+
+/* ===== TRANSACTION ROW ===== */
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.transaction-row span {
+  font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+}
+
+.transaction-row.faded {
+  opacity: 0.7;
+}
+
+/* ===== BUTTONS ===== */
+.primary-btn {
+  background: linear-gradient(135deg, #00ffd5, #00b3ff);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.2s;
+  width: 100%;
+}
+
+.primary-btn:hover {
+  transform: scale(1.02);
+}
+
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.reset-btn {
+  background: #ff9f1c;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* ===== SECTION HEADER ===== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ===== HISTORY ===== */
+.history-block {
+  margin-bottom: 20px;
+}
+
+/* ===== EXPENSE FORM ===== */
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+/* ===== RESPONSIVE HELPERS ===== */
+@media (max-width: 480px) {
+  .finance-page {
+    padding: 90px 4% 50px;
+  }
+
+  .card {
+    padding: 16px;
+  }
 }

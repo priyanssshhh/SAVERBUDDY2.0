@@ -5,7 +5,7 @@
   overflow-x: hidden;
 }
 
-/* --- Hero Section --- */
+
 .hero-section {
   min-height: 100vh;
   display: flex;
@@ -13,7 +13,7 @@
   justify-content: center;
 }
 
-/* --- Features Section --- */
+
 .features-section {
   padding: 100px 10%;
   background: linear-gradient(180deg, #0a0a0a 0%, #101010 100%);
@@ -53,7 +53,7 @@
   margin-bottom: 10px;
 }
 
-/* --- Pro Section --- */
+
 .pro-section {
   background: radial-gradient(circle at top left, #00ffc8 0%, #007bff 100%);
   color: #000;
@@ -94,7 +94,6 @@
   transform: scale(1.05);
 }
 
-/* --- Testimonials --- */
 .testimonials-section {
   padding: 100px 10%;
   background-color: #0f0f0f;
@@ -125,7 +124,7 @@
   color: #00ffc8;
 }
 
-/* --- Resources Section --- */
+
 .resources-section {
   background: linear-gradient(180deg, #03121a, #021b25);
   color: #fff;
@@ -158,7 +157,7 @@
   text-decoration: underline;
 }
 
-/* --- Support Section (fixed layout) --- */
+
 .support-section {
   background: #000;
   text-align: center;
@@ -212,7 +211,7 @@
   color: #000;
 }
 
-/* --- Footer --- */
+
 .footer {
   background: #000;
   text-align: center;

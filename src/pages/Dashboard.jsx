@@ -7,42 +7,14 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   const features = [
-    {
-      title: "Bill Splitter",
-      desc: "Split bills & see who pays whom exactly.",
-      icon: "🤝",
-      path: "/splitter",
-    },
-    {
-      title: "My Finances",
-      desc: "Track expenses, income & savings.",
-      icon: "💰",
-      path: "/myfinances",
-    },
-    {
-      title: "AI Assistant",
-      desc: "Smart budgeting & saving suggestions.",
-      icon: "🤖",
-      path: "/ai",
-    },
-    {
-      title: "Best Deals",
-      desc: "Find best market deals & coupons.",
-      icon: "🏷️",
-      path: "/deals",
-    },
-    {
-      title: "Where to Invest",
-      desc: "Guidance on saving & investing money.",
-      icon: "📈",
-      path: "/invest",
-    },
-    {
-      title: "SaverBuddy Pay",
-      desc: "Pay bills & get cashback offers.",
-      icon: "💳",
-      path: "/pay",
-    },
+    { title: "My Finances", desc: "Track monthly expenses, salary & savings with history.", icon: "💰", path: "/myfinances", color: "#00ffc8" },
+    { title: "Bill Splitter", desc: "AI-optimized settlements — minimum transactions.", icon: "🤝", path: "/splitter", color: "#007bff" },
+    { title: "AI Advisor", desc: "Personalized AI advice on spending & saving.", icon: "🤖", path: "/ai", color: "#6A5ACD" },
+    { title: "Best Deals", desc: "Compare prices across Amazon, Flipkart, Zepto & more.", icon: "🏷️", path: "/deals", color: "#FF8C00" },
+    { title: "Investment Advisor", desc: "AI-guided SIP, stocks & savings plan.", icon: "📈", path: "/invest", color: "#00aaff" },
+    { title: "Bill Scanner", desc: "Scan receipts — AI auto-adds all expenses.", icon: "📷", path: "/scanner", color: "#FF4D4D" },
+    { title: "UPI Tracker", desc: "Paste GPay/Paytm SMS — auto-track expenses.", icon: "📱", path: "/upi", color: "#8B2CF5" },
+    { title: "SaverBuddy Pay", desc: "Pay bills & get cashback. Coming soon.", icon: "💳", path: "/pay", color: "#ffae42" },
   ];
 
   return (
@@ -51,7 +23,7 @@ export default function Dashboard() {
         Welcome to <span>SaverBuddy</span> 🚀
       </h1>
       <p className="dashboard-subtitle">
-        All your money tools — one powerful dashboard
+        All your money tools — one powerful AI dashboard
       </p>
 
       <div className="dashboard-grid">
@@ -60,9 +32,10 @@ export default function Dashboard() {
             key={index}
             className="dashboard-card"
             onClick={() => navigate(item.path)}
+            style={{ "--card-color": item.color }}
           >
             <div className="icon">{item.icon}</div>
-            <h3>{item.title}</h3>
+            <h3 style={{ color: item.color }}>{item.title}</h3>
             <p>{item.desc}</p>
           </div>
         ))}

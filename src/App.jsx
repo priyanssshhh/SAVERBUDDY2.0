@@ -5,23 +5,29 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Global Components
 import Navbar from "./components/Navbar";
 import BackgroundVideo from "./components/BackgroundVideo";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-// Pages
+// Public Pages
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
 import Pricing from "./pages/Pricing";
-import MyFinances from "./pages/MyFinances";
-import BillSplitter from "./pages/BillSplitter";
 import Support from "./pages/Support";
-import Features from "./pages/Features"; // ✅ ADD THIS
-import Profile from "./pages/Profile";
-import Settings from "./pages/Settings";
-
-
+import Features from "./pages/Features";
 
 // Auth
-import Login from "./components/authentication/Login";
-import Signup from "./components/authentication/Signup";
+import Login from "./components/Authentication/Login";
+import Signup from "./components/Authentication/Signup";
+
+// Protected Pages
+import Dashboard from "./pages/Dashboard";
+import MyFinances from "./pages/MyFinances";
+import BillSplitter from "./pages/BillSplitter";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import AIAdvisor from "./pages/AIAdvisor";
+import Deals from "./pages/Deals";
+import Invest from "./pages/Invest";
+import BillScanner from "./pages/BillScanner";
+import UPITracker from "./pages/UPITracker";
 
 function App() {
   return (
@@ -30,30 +36,28 @@ function App() {
       <Navbar />
 
       <Routes>
-        {/* 🌐 Public */}
+        {/* 🌐 Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/support" element={<Support />} />
-        <Route path="/features" element={<Features />} /> {/* ✅ FIX */}
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/features" element={<Features />} />
 
-
-        {/* 🔐 Auth */}
+        {/* 🔐 Auth Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* 👤 User Area */}
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/myfinances" element={<MyFinances />} />
-        <Route path="/splitter" element={<BillSplitter />} />
-        <Route path="/profile" element={<Profile />} />
-
-
-        {/* 🚀 Future features */}
-        <Route path="/ai" element={<ComingSoon title="AI Assistant" />} />
-        <Route path="/deals" element={<ComingSoon title="Best Market Deals" />} />
-        <Route path="/invest" element={<ComingSoon title="Investment Advisor" />} />
-        <Route path="/pay" element={<ComingSoon title="SaverBuddy Pay" />} />
+        {/* 👤 Protected Routes */}
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/myfinances" element={<ProtectedRoute><MyFinances /></ProtectedRoute>} />
+        <Route path="/splitter" element={<ProtectedRoute><BillSplitter /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+        <Route path="/ai" element={<ProtectedRoute><AIAdvisor /></ProtectedRoute>} />
+        <Route path="/deals" element={<ProtectedRoute><Deals /></ProtectedRoute>} />
+        <Route path="/invest" element={<ProtectedRoute><Invest /></ProtectedRoute>} />
+        <Route path="/scanner" element={<ProtectedRoute><BillScanner /></ProtectedRoute>} />
+        <Route path="/upi" element={<ProtectedRoute><UPITracker /></ProtectedRoute>} />
+        <Route path="/pay" element={<ProtectedRoute><ComingSoon title="SaverBuddy Pay" /></ProtectedRoute>} />
 
         {/* ❌ 404 */}
         <Route path="*" element={<NotFound />} />
@@ -62,18 +66,17 @@ function App() {
   );
 }
 
-/* 🔧 Helper components (unchanged) */
 const ComingSoon = ({ title }) => (
   <div style={pageStyle}>
     <h1>🚧 {title}</h1>
-    <p>Coming soon in SaverBuddy Pro</p>
+    <p style={{ color: "#aaa", marginTop: 10 }}>Coming soon in SaverBuddy Pro</p>
   </div>
 );
 
 const NotFound = () => (
   <div style={pageStyle}>
-    <h1>404</h1>
-    <p>Page not found</p>
+    <h1 style={{ color: "#00ffc8" }}>404</h1>
+    <p style={{ color: "#aaa", marginTop: 10 }}>Page not found</p>
   </div>
 );
 
@@ -85,6 +88,7 @@ const pageStyle = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
+  fontFamily: "Poppins, sans-serif",
 };
 
 export default App;
