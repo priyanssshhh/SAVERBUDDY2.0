@@ -1,5 +1,4 @@
 // src/App.jsx
-import SavingsGoals from "./pages/SavingsGoals";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -29,6 +28,7 @@ import Deals from "./pages/Deals";
 import Invest from "./pages/Invest";
 import BillScanner from "./pages/BillScanner";
 import UPITracker from "./pages/UPITracker";
+import SavingsGoals from "./pages/SavingsGoals";
 
 function App() {
   return (
@@ -38,7 +38,6 @@ function App() {
 
       <Routes>
         {/* 🌐 Public Routes */}
-        
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/support" element={<Support />} />
@@ -49,18 +48,102 @@ function App() {
         <Route path="/signup" element={<Signup />} />
 
         {/* 👤 Protected Routes */}
-        <Route path="/goals" element={<ProtectedRoute><SavingsGoals /></ProtectedRoute>} />
-        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route path="/myfinances" element={<ProtectedRoute><MyFinances /></ProtectedRoute>} />
-        <Route path="/splitter" element={<ProtectedRoute><BillSplitter /></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-        <Route path="/ai" element={<ProtectedRoute><AIAdvisor /></ProtectedRoute>} />
-        <Route path="/deals" element={<ProtectedRoute><Deals /></ProtectedRoute>} />
-        <Route path="/invest" element={<ProtectedRoute><Invest /></ProtectedRoute>} />
-        <Route path="/scanner" element={<ProtectedRoute><BillScanner /></ProtectedRoute>} />
-        <Route path="/upi" element={<ProtectedRoute><UPITracker /></ProtectedRoute>} />
-        <Route path="/pay" element={<ProtectedRoute><ComingSoon title="SaverBuddy Pay" /></ProtectedRoute>} />
+        <Route
+          path="/savings"
+          element={
+            <ProtectedRoute>
+              <SavingsGoals />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/myfinances"
+          element={
+            <ProtectedRoute>
+              <MyFinances />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/splitter"
+          element={
+            <ProtectedRoute>
+              <BillSplitter />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ai"
+          element={
+            <ProtectedRoute>
+              <AIAdvisor />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/deals"
+          element={
+            <ProtectedRoute>
+              <Deals />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/invest"
+          element={
+            <ProtectedRoute>
+              <Invest />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/scanner"
+          element={
+            <ProtectedRoute>
+              <BillScanner />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/upi"
+          element={
+            <ProtectedRoute>
+              <UPITracker />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/pay"
+          element={
+            <ProtectedRoute>
+              <ComingSoon title="SaverBuddy Pay" />
+            </ProtectedRoute>
+          }
+        />
 
         {/* ❌ 404 */}
         <Route path="*" element={<NotFound />} />
@@ -72,7 +155,9 @@ function App() {
 const ComingSoon = ({ title }) => (
   <div style={pageStyle}>
     <h1>🚧 {title}</h1>
-    <p style={{ color: "#aaa", marginTop: 10 }}>Coming soon in SaverBuddy Pro</p>
+    <p style={{ color: "#aaa", marginTop: 10 }}>
+      Coming soon in SaverBuddy Pro
+    </p>
   </div>
 );
 
