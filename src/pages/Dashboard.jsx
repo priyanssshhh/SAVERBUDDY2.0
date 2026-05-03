@@ -15,6 +15,7 @@ export default function Dashboard() {
     { title: "Bill Scanner", desc: "Scan receipts — AI auto-adds all expenses.", icon: "📷", path: "/scanner", color: "#FF4D4D" },
     { title: "UPI Tracker", desc: "Paste GPay/Paytm SMS — auto-track expenses.", icon: "📱", path: "/upi", color: "#8B2CF5" },
     { title: "SaverBuddy Pay", desc: "Pay bills & get cashback. Coming soon.", icon: "💳", path: "/pay", color: "#ffae42" },
+    { title: "Savings Goals", desc: "Set targets and track progress toward your dreams.", icon: "🎯", path: "/goals", color: "#00c896" },
   ];
 
   return (

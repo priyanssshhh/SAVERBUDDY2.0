@@ -1,4 +1,5 @@
 // src/App.jsx
+import SavingsGoals from "./pages/SavingsGoals";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -37,6 +38,7 @@ function App() {
 
       <Routes>
         {/* 🌐 Public Routes */}
+        
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/support" element={<Support />} />
@@ -47,6 +49,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
 
         {/* 👤 Protected Routes */}
+        <Route path="/goals" element={<ProtectedRoute><SavingsGoals /></ProtectedRoute>} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/myfinances" element={<ProtectedRoute><MyFinances /></ProtectedRoute>} />
         <Route path="/splitter" element={<ProtectedRoute><BillSplitter /></ProtectedRoute>} />

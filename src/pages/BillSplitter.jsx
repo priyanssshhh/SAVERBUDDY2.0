@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import "./BillSplitter.css";
 import { calculateSettlement } from "../services/billSettlement";
-
+// src/pages/BillSplitter.jsx
+export { default } from "../components/Splitter";
 export default function BillSplitter() {
   const [people, setPeople] = useState([]);
   const [name, setName] = useState("");
