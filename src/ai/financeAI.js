@@ -1,5 +1,3 @@
-// src/ai/financeAI.js
-
 export function analyzeExpenses(transactions, salary) {
   let totalSpent = 0;
   const categories = {};
@@ -9,33 +7,22 @@ export function analyzeExpenses(transactions, salary) {
     categories[t.category] = (categories[t.category] || 0) + t.amount;
   });
 
-  let suggestions = [];
+  const suggestions = [];
 
   if (salary) {
     const savings = salary - totalSpent;
-
     if (savings < salary * 0.2) {
-      suggestions.push(
-        "⚠️ Your savings are below 20%. Try reducing unnecessary expenses."
-      );
+      suggestions.push("Your savings are below 20%. Try reducing unnecessary expenses.");
     } else {
-      suggestions.push(
-        "✅ Great job! You are saving a healthy portion of your income."
-      );
+      suggestions.push("Great job! You are saving a healthy portion of your income.");
     }
   }
 
   Object.entries(categories).forEach(([cat, amt]) => {
     if (amt > totalSpent * 0.4) {
-      suggestions.push(
-        `💡 You are spending heavily on ${cat}. Consider setting a monthly limit.`
-      );
+      suggestions.push(`You are spending heavily on ${cat}. Consider setting a monthly limit.`);
     }
   });
 
-  return {
-    totalSpent,
-    categories,
-    suggestions,
-  };
+  return { totalSpent, categories, suggestions };
 }

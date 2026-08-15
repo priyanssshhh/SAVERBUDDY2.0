@@ -1,4 +1,3 @@
-// src/pages/AIAdvisor.jsx
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -18,7 +17,6 @@ export default function AIAdvisor() {
     const unsub = onAuthStateChanged(auth, async (u) => {
       if (!u) return;
       setUser(u);
-
       const profile = await getUserProfile(u.uid);
       if (profile?.monthlyIncome) setSalary(String(profile.monthlyIncome));
 
@@ -54,7 +52,7 @@ export default function AIAdvisor() {
       if (data.error) throw new Error(data.error);
       setAdvice(data.text);
     } catch (err) {
-      setAdvice("❌ Error: " + err.message + "\n\nMake sure your server is running with: node server.js");
+      setAdvice("Error: " + err.message);
     } finally {
       setLoading(false);
     }
@@ -71,45 +69,43 @@ export default function AIAdvisor() {
 
   return (
     <div className="finance-page">
-      <h1>🤖 Smart Expense Advisor</h1>
+      <h1>Smart Expense Advisor</h1>
       <p className="subtitle">AI-powered financial guidance based on your real spending data</p>
 
       {dataLoading ? (
         <div className="card"><p>Loading your financial data...</p></div>
       ) : (
         <>
-          {/* SUMMARY */}
           <div className="card">
-            <h2>📊 This Month's Overview</h2>
+            <h2>This Month's Overview</h2>
             <div className="transaction-row">
               <span>Monthly Salary</span>
-              <span style={{ color: "#00ffc8" }}>₹{salary || "Not set"}</span>
+              <span style={{ color: "#00ffc8" }}>Rs {salary || "Not set"}</span>
             </div>
             <div className="transaction-row">
               <span>Total Spent</span>
-              <span style={{ color: "#ff6b6b" }}>₹{totalSpent}</span>
+              <span style={{ color: "#ff6b6b" }}>Rs {totalSpent}</span>
             </div>
             <div className="transaction-row">
               <span>Savings</span>
               <span style={{ color: savings >= 0 ? "#00ffc8" : "#ff4d4d" }}>
-                ₹{savings} ({savingsPercent}%)
+                Rs {savings} ({savingsPercent}%)
               </span>
             </div>
             {savings < Number(salary) * 0.2 && salary && (
               <p style={{ color: "#ff9f1c", marginTop: 10, fontSize: "0.9rem" }}>
-                ⚠️ You are saving less than 20% of your income. AI advice recommended.
+                You are saving less than 20% of your income. AI advice recommended.
               </p>
             )}
           </div>
 
-          {/* CATEGORY BREAKDOWN */}
           {Object.keys(categoryTotals).length > 0 && (
             <div className="card">
-              <h2>📂 Category Breakdown</h2>
+              <h2>Category Breakdown</h2>
               {Object.entries(categoryTotals).map(([cat, amt]) => (
                 <div key={cat} className="transaction-row">
                   <span>{cat}</span>
-                  <span>₹{amt}</span>
+                  <span>Rs {amt}</span>
                   <span style={{ color: "#aaa", fontSize: "0.85rem" }}>
                     {salary ? ((amt / Number(salary)) * 100).toFixed(1) + "% of salary" : ""}
                   </span>
@@ -118,19 +114,17 @@ export default function AIAdvisor() {
             </div>
           )}
 
-          {/* NO DATA WARNINGS */}
           {!salary && (
             <div className="card" style={{ borderColor: "#ff9f1c" }}>
-              <p>⚠️ Salary not set. <a href="/myfinances" style={{ color: "#00ffc8" }}>Set it in My Finances →</a></p>
+              <p>Salary not set. <a href="/myfinances" style={{ color: "#00ffc8" }}>Set it in My Finances</a></p>
             </div>
           )}
           {transactions.length === 0 && (
             <div className="card" style={{ borderColor: "#ff9f1c" }}>
-              <p>⚠️ No expenses this month. <a href="/myfinances" style={{ color: "#00ffc8" }}>Add expenses →</a></p>
+              <p>No expenses this month. <a href="/myfinances" style={{ color: "#00ffc8" }}>Add expenses</a></p>
             </div>
           )}
 
-          {/* AI BUTTON */}
           <div className="card">
             <button
               className="primary-btn"
@@ -138,14 +132,13 @@ export default function AIAdvisor() {
               disabled={loading}
               style={{ width: "100%", padding: "14px", fontSize: "1rem" }}
             >
-              {loading ? "🧠 AI is analyzing your finances..." : "🧠 Get Personalized AI Advice"}
+              {loading ? "Analyzing your finances..." : "Get Personalized AI Advice"}
             </button>
           </div>
 
-          {/* AI RESPONSE */}
           {advice && (
             <div className="card" style={{ borderColor: "#00ffc8" }}>
-              <h2>💡 Your AI Financial Advisor Says:</h2>
+              <h2>Your AI Financial Advisor Says:</h2>
               <pre style={{
                 whiteSpace: "pre-wrap", lineHeight: 1.9,
                 color: "#e0e0e0", fontFamily: "Poppins, sans-serif",

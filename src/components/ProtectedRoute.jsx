@@ -15,12 +15,16 @@ export default function ProtectedRoute({ children }) {
 
   if (status === "loading") {
     return (
-      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column",
+      <div style={{
+        minHeight: "100vh", display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center", background: "#0b0b0b",
-        color: "#00ffc8", fontSize: "1.2rem", gap: "16px" }}>
-        <div style={{ width: 48, height: 48, border: "4px solid rgba(0,255,200,0.2)",
+        color: "#00ffc8", fontSize: "1.2rem", gap: "16px"
+      }}>
+        <div style={{
+          width: 48, height: 48, border: "4px solid rgba(0,255,200,0.2)",
           borderTop: "4px solid #00ffc8", borderRadius: "50%",
-          animation: "spin 0.8s linear infinite" }} />
+          animation: "spin 0.8s linear infinite"
+        }} />
         <p>Loading SaverBuddy...</p>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>

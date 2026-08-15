@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../firebase";
@@ -21,13 +20,11 @@ export default function Navbar() {
     return () => unsub();
   }, []);
 
-  // Close menus on route change
   useEffect(() => {
     setMobileOpen(false);
     setDropdownOpen(false);
   }, [location.pathname]);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const close = (e) => {
       if (!e.target.closest(".account-dropdown")) setDropdownOpen(false);
@@ -69,7 +66,6 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        {/* LEFT */}
         <div className="navbar-left" onClick={() => navigate("/")}>
           <div className="navbar-logo">
             <img src="/logo.png" alt="SaverBuddy" />
@@ -81,7 +77,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* CENTER — desktop only */}
         <ul className="navbar-links">
           <li>
             {!user
@@ -101,38 +96,39 @@ export default function Navbar() {
           </li>
         </ul>
 
-        {/* RIGHT — desktop only */}
         <div className="account-dropdown">
           {!user ? (
             <Link to="/login" className="login-btn">Login</Link>
           ) : (
-            <div className="profile-container"
-              onClick={(e) => { e.stopPropagation(); setDropdownOpen(!dropdownOpen); }}>
+            <div
+              className="profile-container"
+              onClick={(e) => { e.stopPropagation(); setDropdownOpen(!dropdownOpen); }}
+            >
               <span className="profile-name">{user.displayName || "My Account"}</span>
               {dropdownOpen && (
                 <div className="dropdown-menu" style={{ display: "block" }}>
                   <div className="dropdown-title">My Account</div>
-                  {navLink("/dashboard", "📊 Dashboard")}
-                  {navLink("/myfinances", "💰 My Finances")}
-                  {navLink("/ai", "🤖 AI Advisor")}
-                  {navLink("/deals", "🏷️ Best Deals")}
-                  {navLink("/invest", "📈 Investments")}
-                  {navLink("/scanner", "📷 Bill Scanner")}
-                  {navLink("/upi", "📱 UPI Tracker")}
-                  {navLink("/splitter", "🤝 Bill Splitter")}
+                  {navLink("/dashboard", "Dashboard")}
+                  {navLink("/myfinances", "My Finances")}
+                  {navLink("/ai", "AI Advisor")}
+                  {navLink("/deals", "Best Deals")}
+                  {navLink("/invest", "Investments")}
+                  {navLink("/scanner", "Bill Scanner")}
+                  {navLink("/upi", "UPI Tracker")}
+                  {navLink("/splitter", "Bill Splitter")}
+                  {navLink("/savings", "Savings Goals")}
                   <hr className="dropdown-divider" />
-                  {navLink("/profile", "👤 Profile")}
-                  {navLink("/settings", "⚙️ Settings")}
-                  {navLink("/support", "❓ Support")}
+                  {navLink("/profile", "Profile")}
+                  {navLink("/settings", "Settings")}
+                  {navLink("/support", "Support")}
                   <hr className="dropdown-divider" />
-                  <button className="logout" onClick={handleLogout}>🚪 Logout</button>
+                  <button className="logout" onClick={handleLogout}>Logout</button>
                 </div>
               )}
             </div>
           )}
         </div>
 
-        {/* HAMBURGER — mobile only */}
         <button
           className={`hamburger ${mobileOpen ? "open" : ""}`}
           onClick={(e) => { e.stopPropagation(); setMobileOpen(!mobileOpen); }}
@@ -144,35 +140,35 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* MOBILE MENU */}
       <div className={`mobile-menu ${mobileOpen ? "open" : ""}`}>
         {!user ? (
           <>
             <button onClick={() => scrollToSection("features")}>Features</button>
-            <Link to="/pricing">💎 Pricing</Link>
+            <Link to="/pricing">Pricing</Link>
             <button onClick={() => scrollToSection("resources")}>Resources</button>
             <button onClick={() => scrollToSection("support")}>Support</button>
             <div className="mobile-divider" />
-            <Link to="/login">🔐 Login</Link>
-            <Link to="/signup">✨ Sign Up</Link>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
           </>
         ) : (
           <>
-            <Link to="/dashboard">📊 Dashboard</Link>
-            <Link to="/myfinances">💰 My Finances</Link>
-            <Link to="/ai">🤖 AI Advisor</Link>
-            <Link to="/deals">🏷️ Best Deals</Link>
-            <Link to="/invest">📈 Investments</Link>
-            <Link to="/scanner">📷 Bill Scanner</Link>
-            <Link to="/upi">📱 UPI Tracker</Link>
-            <Link to="/splitter">🤝 Bill Splitter</Link>
+            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/myfinances">My Finances</Link>
+            <Link to="/ai">AI Advisor</Link>
+            <Link to="/deals">Best Deals</Link>
+            <Link to="/invest">Investments</Link>
+            <Link to="/scanner">Bill Scanner</Link>
+            <Link to="/upi">UPI Tracker</Link>
+            <Link to="/splitter">Bill Splitter</Link>
+            <Link to="/savings">Savings Goals</Link>
             <div className="mobile-divider" />
-            <Link to="/profile">👤 Profile</Link>
-            <Link to="/settings">⚙️ Settings</Link>
-            <Link to="/pricing">💎 Pricing</Link>
-            <Link to="/support">❓ Support</Link>
+            <Link to="/profile">Profile</Link>
+            <Link to="/settings">Settings</Link>
+            <Link to="/pricing">Pricing</Link>
+            <Link to="/support">Support</Link>
             <div className="mobile-divider" />
-            <button className="mobile-logout" onClick={handleLogout}>🚪 Logout</button>
+            <button className="mobile-logout" onClick={handleLogout}>Logout</button>
           </>
         )}
       </div>
