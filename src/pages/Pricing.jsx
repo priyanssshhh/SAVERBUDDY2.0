@@ -1,4 +1,3 @@
-// src/pages/Pricing.jsx
 import React from "react";
 import "./Pricing.css";
 
@@ -6,11 +5,11 @@ const Pricing = () => {
   const plans = [
     {
       name: "Free Plan",
-      price: "₹0 /month",
+      price: "Rs 0 /month",
       features: [
         "AI Budget Assistant (Basic)",
         "Expense Splitter (Up to 5 People)",
-        "Limited Reports & Insights",
+        "Limited Reports and Insights",
         "Basic Expense Manager",
       ],
       highlight: false,
@@ -18,7 +17,7 @@ const Pricing = () => {
     },
     {
       name: "SaverBuddy Pro",
-      price: "₹99 /month",
+      price: "Rs 99 /month",
       features: [
         "Unlimited Expense Splitter",
         "Advanced AI Insights",
@@ -31,11 +30,11 @@ const Pricing = () => {
     },
     {
       name: "SaverBuddy Premium",
-      price: "₹199 /month",
+      price: "Rs 199 /month",
       features: [
         "All Pro Features",
         "Priority Support",
-        "Cloud Sync & Backup",
+        "Cloud Sync and Backup",
         "Multi-Device Access",
         "Early Access to New Tools",
       ],
@@ -46,34 +45,21 @@ const Pricing = () => {
 
   return (
     <div className="pricing-page">
-      <h1>
-        Choose Your <span style={{ color: "#00ffc8" }}>SaverBuddy Plan</span>
-      </h1>
-      <p className="subtitle">
-        Smart, affordable plans designed for students, professionals, and teams.
-      </p>
+      <h1>Choose Your <span style={{ color: "#00ffc8" }}>SaverBuddy Plan</span></h1>
+      <p className="subtitle">Smart, affordable plans for students, professionals, and teams.</p>
 
       <div className="plans-container">
         {plans.map((plan, index) => (
-          <div
-            key={index}
-            className={`plan-card ${plan.highlight ? "highlight" : ""}`}
-            style={{ borderColor: plan.color }}
-          >
+          <div key={index} className={`plan-card ${plan.highlight ? "highlight" : ""}`} style={{ borderColor: plan.color }}>
             <h2 style={{ color: plan.color }}>{plan.name}</h2>
             <h3>{plan.price}</h3>
             <ul>
               {plan.features.map((feature, i) => (
-                <li key={i}>✅ {feature}</li>
+                <li key={i}>— {feature}</li>
               ))}
             </ul>
-            <button
-              className="subscribe-btn"
-              style={{
-                background: `linear-gradient(90deg, ${plan.color}, #00aaff)`,
-              }}
-            >
-              {plan.price === "₹0 /month" ? "Get Started" : "Subscribe"}
+            <button className="subscribe-btn" style={{ background: `linear-gradient(90deg, ${plan.color}, #00aaff)` }}>
+              {plan.price === "Rs 0 /month" ? "Get Started" : "Subscribe"}
             </button>
           </div>
         ))}

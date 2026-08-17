@@ -8,15 +8,11 @@ export default function Settings() {
   const [user, setUser] = useState(null);
   const [darkMode, setDarkMode] = useState(true);
   const [emailAlerts, setEmailAlerts] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (u) => {
-      if (!u) {
-        navigate("/login");
-        return;
-      }
+      if (!u) { navigate("/login"); return; }
       setUser(u);
     });
     return () => unsub();
@@ -31,48 +27,30 @@ export default function Settings() {
 
   return (
     <div className="settings-page">
-      <h1>⚙️ Settings</h1>
+      <h1>Settings</h1>
 
-      {/* ACCOUNT */}
       <div className="settings-card">
-        <h2>👤 Account</h2>
+        <h2>Account</h2>
         <p><strong>Name:</strong> {user.displayName || "User"}</p>
         <p><strong>Email:</strong> {user.email}</p>
       </div>
 
-      {/* PREFERENCES */}
       <div className="settings-card">
-        <h2>🎨 Preferences</h2>
-
+        <h2>Preferences</h2>
         <label className="toggle-row">
           <span>Dark Mode</span>
-          <input
-            type="checkbox"
-            checked={darkMode}
-            onChange={() => setDarkMode(!darkMode)}
-          />
+          <input type="checkbox" checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
         </label>
-
         <label className="toggle-row">
           <span>Email Alerts</span>
-          <input
-            type="checkbox"
-            checked={emailAlerts}
-            onChange={() => setEmailAlerts(!emailAlerts)}
-          />
+          <input type="checkbox" checked={emailAlerts} onChange={() => setEmailAlerts(!emailAlerts)} />
         </label>
-
-        <p className="hint">
-          (These will be saved later — UI only for now)
-        </p>
+        <p className="hint">Preference saving coming soon.</p>
       </div>
 
-      {/* SECURITY */}
       <div className="settings-card danger">
-        <h2>🔐 Security</h2>
-        <button className="logout-btn" onClick={logout}>
-          🚪 Logout
-        </button>
+        <h2>Security</h2>
+        <button className="logout-btn" onClick={logout}>Logout</button>
       </div>
     </div>
   );

@@ -6,7 +6,6 @@
   padding-bottom: 60px;
 }
 
-/* --- Hero Section --- */
 .support-hero {
   text-align: center;
   padding: 120px 10% 60px;
@@ -58,11 +57,10 @@
   transform: scale(1.05);
 }
 
-/* --- Cards Section --- */
 .support-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
   padding: 60px 10%;
   text-align: center;
 }
@@ -77,20 +75,56 @@
 }
 
 .support-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 25px rgba(0, 255, 200, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(0, 255, 200, 0.25);
 }
 
 .support-card span {
+  display: inline-block;
+  background: rgba(0, 255, 200, 0.12);
+  color: #00ffc8;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.support-card h3 {
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.support-card p {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.contact-section {
+  padding: 60px 10%;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-section h2 {
   font-size: 2rem;
-  display: block;
+  color: #00ffc8;
   margin-bottom: 10px;
 }
 
-/* --- Explore Section --- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: left;
+}
+
 .explore-section {
   text-align: center;
-  padding: 80px 10%;
+  padding: 60px 10%;
   background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
 }
 
@@ -115,11 +149,20 @@
 }
 
 .explore-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 25px rgba(0, 255, 200, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(0, 255, 200, 0.25);
 }
 
-/* --- Footer --- */
+.explore-item h3 {
+  color: #00ffc8;
+  margin-bottom: 10px;
+}
+
+.explore-item p {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
 .support-footer {
   text-align: center;
   padding: 40px 10%;
@@ -136,4 +179,11 @@
 
 .support-footer span:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .support-hero { padding: 100px 6% 40px; }
+  .support-hero h1 { font-size: 2rem; }
+  .support-cards { padding: 40px 6%; }
+  .contact-section { padding: 40px 6%; }
 }
